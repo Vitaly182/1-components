@@ -1,36 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import Profile from './components/Profile';
+
 
 function App() {
   return (
-    <div>
+    <div className='app-wrapper'>
       <Header/>
-      <Technologies/>
+      <Navbar/>
+      <Profile/>
+
     </div>
   );
-}
-
-const Header = () => {
-  return (
-    <div>
-      <a href='#'>Home </a>
-      <a href='#'>News Feed </a>
-      <a href='#'>Messages </a>
-    </div>
-  )
-}
-
-const Technologies = () => {
-  return (
-    <div>
-      <ul>
-        <li>html</li>
-        <li>css</li>
-        <li>js</li>
-        <li>react</li>
-      </ul>
-  </div>
-  )
 }
 
 
