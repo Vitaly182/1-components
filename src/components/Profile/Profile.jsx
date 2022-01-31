@@ -3,7 +3,7 @@ import cl from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div className={cl.content}>
+        <div>
             <div>
                 <img src='http://www.pitert.ru/sites/default/files/cuba-russians-quarantine-shattered-sales.jpg'/>
             </div>
