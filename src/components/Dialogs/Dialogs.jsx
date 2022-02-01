@@ -1,24 +1,38 @@
 import React from 'react';
 import cl  from './Dialogs.module.css';
+import { NavLink } from "react-router-dom"
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id
+
+    return (
+        <div className={cl.dialog + ' ' + cl.active}>
+            <NavLink to={path}> {props.name} </NavLink>
+        </div>
+    )
+}
+
+const Message = (props) =>{
+
+    return (
+        <div className={cl.message}>{props.message}</div>
+    )
+}
 
 const Dialogs = (props) => {
     return (
         <div className={cl.dialogs}>
             <div className={cl.dialogsItems}>
-                <div className={cl.dialog + ' ' + cl.active}>
-                    Vitaly
-                </div>
-                <div className={cl.dialog}>
-                    Max
-                </div>
-                <div className={cl.dialog}>
-                    Bork
-                </div>
+                <DialogItem name='Vitaly' id='1' />
+                <DialogItem name='Max' id='2' />
+                <DialogItem name='Bork' id='3' />
+                <DialogItem name='Ork' id='4' />
+                <DialogItem name='Lind' id='5' />
             </div>
             <div className={cl.messages}>
-                <div className={cl.message}>Hi</div>
-                <div className={cl.message}>Who's that ?</div>
-                <div className={cl.message}>Nothing</div>
+                <Message message='Hi' />
+                <Message message="Who's that ?" />
+                <Message message='Nothing' />
             </div>
         </div>
     );
