@@ -22,9 +22,20 @@ let state = {
         ],
     
         messages: [
-            { id: 1, message: 'Hi' },
-            { id: 2, message: "Who's that ?" },
-            { id: 3, message: 'Nothing' }
+            { id: 1, name: 'Vitaly', message: 'Hi' },
+            { id: 2, name: 'Vitaly', message: "Who's that ?" },
+            { id: 3, name: 'Max', message: 'Nothing' },
+            { id: 4, name: 'Max', message: 'No' },
+            { id: 5, name: 'Ork', message: 'What' },
+            { id: 6, name: 'Ork', message: 'You' }
+        ]
+    },
+
+    sitebar: {
+        friends: [
+            { id:1, name: 'Max'},
+            { id:2, name: 'Bork'},
+            { id:3, name: 'Lind'}
         ]
     }
     
