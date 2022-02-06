@@ -4,7 +4,6 @@ import cl  from './Message.module.css';
 
 const Message = (props) =>{
 
-
     return (
         <div className={cl.message}>
             {props.message}
