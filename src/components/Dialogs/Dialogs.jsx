@@ -2,7 +2,7 @@ import React from 'react';
 import cl from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
-import { addMessageActionCreator, addUpdateNewMessageTextActionCreator } from '../../redux/state';
+import { addMessageCreator, addUpdateNewMessageTextCreator } from '../../redux/state';
 
 const Dialogs = (props) => {
 
@@ -11,15 +11,19 @@ const Dialogs = (props) => {
 
     let messagesElements = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message} name={m.name} />);
 
-    let newMessageElement = React.createRef();
+    // let newMessageElement = React.createRef();
+
+    let newMessageText = props.dialogsPage.newMessageText;
+
 
     let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.dispatch(addMessageCreator());
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.dispatch(addUpdateNewMessageTextActionCreator(text));
+    let onMessageChange = (e) => {
+        let text = e.target.value;
+        // let text = newMessageElement.current.value;
+        props.dispatch(addUpdateNewMessageTextCreator(text));
     }
 
 
@@ -29,12 +33,15 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <div className={cl.messages}>
-                {/* {messagesElements} */}
+                <div>
+                    {messagesElements}
+                </div>
                 <div>
                     <textarea
+                        placeholder= 'Enter your message'
                         onChange={onMessageChange}
-                        ref={newMessageElement}
-                        value={props.dialogsPage.newMessageText}
+                        // ref={newMessageElement}
+                        value={newMessageText}
                     />
                 </div>
                 <div>
@@ -43,7 +50,6 @@ const Dialogs = (props) => {
                 <div>
                     <button>Remove message</button>
                 </div>
-                {messagesElements}
             </div>
         </div>
     );
