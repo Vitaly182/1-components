@@ -7,7 +7,7 @@ const setActive = ({isActive}) => isActive ? cl.activeLink : cl.item;
 
 const Navbar = (props) => {
     debugger
-    let sidebarElements = props.sitebar.friends.map( f => <Friend id={f.id} name={f.name}/> );
+    let sidebarElements = props.sitebar.friends.map( f => <Friend id={f.id} key={f.id} name={f.name}/> );
 
     return (
         <nav className={cl.nav}>
