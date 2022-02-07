@@ -6,7 +6,6 @@ const setActive = ({isActive}) => isActive ? cl.activeLink : cl.item;
 
 
 const Navbar = (props) => {
-
     let sidebarElements = props.state.friends.map( f => <Friend id={f.id} name={f.name}/> );
 
     return (
