@@ -6,8 +6,9 @@ import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
+import UsersContainer from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
-import {connect} from 'react-redux';
+
 
 
 function App() { 
@@ -22,12 +23,14 @@ function App() {
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/news/*" element={<News/>} />
           <Route path="/music/*" element={<Music/>} />
+          <Route path="/users/*" element={<UsersContainer/>} />
           <Route path="/settings/*" element={<Settings/>} />
         </Routes>
       </div>
     </div>    
   );
 }
+
 
 
 

@@ -6,7 +6,6 @@ const setActive = ({isActive}) => isActive ? cl.activeLink : cl.item;
 
 
 const Navbar = (props) => {
-    debugger
     let sidebarElements = props.sitebar.friends.map( f => <Friend id={f.id} key={f.id} name={f.name}/> );
 
     return (
@@ -22,6 +21,9 @@ const Navbar = (props) => {
             </div>
             <div className={cl.item}>
                 <NavLink to='/music' className = { setActive }>Music</NavLink>
+            </div>
+            <div className={cl.item, cl.settings}>
+                <NavLink to='/users' className = { setActive }>Users</NavLink>
             </div>
             <div className={cl.item, cl.settings}>
                 <NavLink to='/settings' className = { setActive }>Settings</NavLink>
