@@ -1,55 +1,14 @@
 import React from 'react';
 import cl from './Users.module.css';
+import * as axios from 'axios';
+import userPhoto from '../../assets/images/user.png';
 
 let Users = (props) => {
-    debugger
     if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1, 
-                photoUrl: 'https://avatars.mds.yandex.net/i?id=06ad5aa77b521c6323be2ad602e04fb0-4965727-images-thumbs&n=13&exp=1',
-                followed: false, 
-                fullname: 'Vitaly', 
-                status: 'Very well', 
-                location: { 
-                    city: 'Moscow', 
-                    country: 'Russia' 
-                }
-            },
-            {
-                id: 2, 
-                photoUrl: 'https://avatars.mds.yandex.net/i?id=06ad5aa77b521c6323be2ad602e04fb0-4965727-images-thumbs&n=13&exp=1',
-                followed: false, 
-                fullname: 'Semen', 
-                status: 'How', 
-                location: { 
-                    city: 'Minsk', 
-                    country: 'Belarus' 
-                }
-            },
-            {
-                id: 3, 
-                photoUrl: 'https://avatars.mds.yandex.net/i?id=06ad5aa77b521c6323be2ad602e04fb0-4965727-images-thumbs&n=13&exp=1',
-                followed: true, 
-                fullname: 'Rolik', 
-                status: "Don't worry", 
-                location: { 
-                    city: 'New-York', 
-                    country: 'USA' 
-                }
-            },
-            {
-                id: 4, 
-                photoUrl: 'https://avatars.mds.yandex.net/i?id=06ad5aa77b521c6323be2ad602e04fb0-4965727-images-thumbs&n=13&exp=1',
-                followed: true, 
-                fullname: 'Rus', 
-                status: 'Be happy', 
-                location: { 
-                    city: 'Tor', 
-                    country: 'Tunis' 
-                }
-            },
-        ])
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then(response => {
+                props.setUsers(response.data.items)
+        });        
     }
 
     return (
@@ -59,7 +18,7 @@ let Users = (props) => {
                     <div key={u.id}>
                         <span>
                             <div>
-                                <img src={u.photoUrl} className={cl.userPhoto} />
+                                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={cl.userPhoto} />
                             </div>
                             <div>
                                 {u.followed
@@ -70,12 +29,12 @@ let Users = (props) => {
                         </span>
                         <span>
                             <span>
-                                <div>{u.fullname}</div>
+                                <div>{u.name}</div>
                                 <div>{u.status}</div>
                             </span>
                             <span>
-                                <div>{u.location.country}</div>
-                                <div>{u.location.city}</div>
+                                <div>{"u.location.country"}</div>
+                                <div>{"u.location.city"}</div>
                             </span>
                         </span>
                     </div>)
