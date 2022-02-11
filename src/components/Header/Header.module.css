@@ -4,6 +4,15 @@
     background-color: rgb(128, 244, 248);
   }
   
-  .header img {
-    height: 50px;
-  }
+.header img {
+  height: 50px;
+}
+
+.loginBlock {
+  float: right;
+}
+
+.loginBlock a {
+  color: rgb(72, 54, 236);
+}
+
