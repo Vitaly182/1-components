@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import UsersContainer from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
+import Login from './components/Login/Login';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/music/*" element={<Music/>} />
           <Route path="/users/*" element={<UsersContainer/>} />
           <Route path="/settings/*" element={<Settings/>} />
+          <Route path="/login/*" element={<Login/>} />
         </Routes>
       </div>
     </div>    
