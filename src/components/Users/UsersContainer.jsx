@@ -3,6 +3,7 @@ import { acceptFollow, acceptUnfollow, setCurrentPage, setToggleIsFollowingProgr
 import {connect} from 'react-redux';
 import Users from './Users';
 import Preloader from '../Common/Preloader/Preloader';
+import {withAuthRedirect} from './../../hoc/withAuthRedirect'
 
 
 class UsersContainer extends React.Component {
@@ -57,6 +58,6 @@ let mapDispatchToProps = {
     unfollow
 }
 
+let AuthRedirectComponent = withAuthRedirect (UsersContainer);
 
-
-export default connect (mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect (mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
