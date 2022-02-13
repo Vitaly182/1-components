@@ -21,9 +21,6 @@ class ProfileContainer extends React.Component {
 }
 
 
-let AuthRedirectComponent = withAuthRedirect (ProfileContainer);
-
-
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile
@@ -34,6 +31,8 @@ let mapDispatchToProps = {
     getProfile
 }
 
+let AuthRedirectComponent = withAuthRedirect (ProfileContainer);
+
 const ProfileMatch = (props) => {
     let match = useMatch("/profile/:userId/");
     return (
@@ -41,4 +40,8 @@ const ProfileMatch = (props) => {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileMatch);
+const SuperProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileMatch)
+
+export default SuperProfileContainer;
+
+

@@ -3,9 +3,7 @@ import { addMessageCreator, addUpdateNewMessageTextCreator } from '../../redux/d
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../../hoc/withAuthRedirect'
-
-
-let AuthRedirectComponent = withAuthRedirect (Dialogs);
+import { compose } from 'redux';
 
 
 let mapStateToProps = (state) => {
@@ -25,8 +23,9 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-
-const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+const SuperDialogsContainer = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs)
 
 export default SuperDialogsContainer;
