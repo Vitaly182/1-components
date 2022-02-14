@@ -1,5 +1,6 @@
 import Preloader from '../../Common/Preloader/Preloader';
 import cl from './ProfileInfo.module.css';
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
 
@@ -9,9 +10,9 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div className={cl.image}>
+            {/* <div className={cl.image}>
                 <img src='http://www.pitert.ru/sites/default/files/cuba-russians-quarantine-shattered-sales.jpg'/>
-            </div>
+            </div> */}
             <div className={cl.descriptionBlock}>
                 <img src={props.profile.photos.large} />
                 <div>
@@ -23,7 +24,7 @@ const ProfileInfo = (props) => {
                 <div>
                     {props.profile.fullName}
                 </div>
-                some text
+                <ProfileStatus status={'Hoh'} />
             </div>
         </div>
     )
