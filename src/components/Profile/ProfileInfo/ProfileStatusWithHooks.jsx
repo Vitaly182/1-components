@@ -3,7 +3,6 @@ import cl from './ProfileInfo.module.css';
 
 
 const ProfileStatusWithHooks = (props) => {
-
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status)
 
