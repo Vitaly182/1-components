@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
@@ -11,8 +11,9 @@ import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
 import { Component } from 'react';
 import { initializeApp } from './redux/app-reducer';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import Preloader from './components/Common/Preloader/Preloader';
+import store from './redux/redux-store';
 
 
 
@@ -24,7 +25,7 @@ class App extends Component {
   render() {
 
     if (!this.props.initialized) {
-      return <Preloader/>
+      return <Preloader />
     }
 
     return (
@@ -60,4 +61,16 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  )
+}
+
+export default MainApp
