@@ -71,11 +71,11 @@ export const getProfile = (userId) => {
 export const getStatus = (userId) => {
     return (
         async (dispatch) => {
-            let response = profileAPI.getStatus(userId);
+            let response = await profileAPI.getStatus(userId);
             dispatch(setStatus(response.data));
         }
     )
-}
+} 
 
 export const updateStatus = (status) => {
     return (
