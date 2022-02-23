@@ -1,9 +1,8 @@
+import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import UsersContainer from './components/Users/UsersContainer';
@@ -15,6 +14,8 @@ import { connect, Provider } from 'react-redux';
 import Preloader from './components/Common/Preloader/Preloader';
 import store from './redux/redux-store';
 
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
 class App extends Component {
@@ -35,8 +36,8 @@ class App extends Component {
 
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path="/profile/*" element={<ProfileContainer />} />
-            <Route path="/dialogs/*" element={<DialogsContainer />} />
+            <Route path="/profile/*" element={<React.Suspense fallback={<Preloader />}><ProfileContainer/></React.Suspense>} />
+            <Route path="/dialogs/*" element={<React.Suspense fallback={<Preloader />}><DialogsContainer/></React.Suspense>} />
             <Route path="/news/*" element={<News />} />
             <Route path="/music/*" element={<Music />} />
             <Route path="/users/*" element={<UsersContainer />} />
