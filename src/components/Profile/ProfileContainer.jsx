@@ -3,7 +3,7 @@ import Profile from './Profile';
 import cl from './Profile.module.css';
 import { connect } from 'react-redux';
 import { useMatch } from 'react-router-dom';
-import { getProfile, getStatus, updateStatus, savePhoto } from '../../redux/profile-reducer'
+import { getProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profile-reducer'
 import {withAuthRedirect} from './../../hoc/withAuthRedirect'
 
 
@@ -52,7 +52,8 @@ let mapDispatchToProps = {
     getProfile,
     getStatus,
     updateStatus,
-    savePhoto
+    savePhoto,
+    saveProfile
 }
 
 let AuthRedirectComponent = withAuthRedirect (ProfileContainer);
