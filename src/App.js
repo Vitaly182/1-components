@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
@@ -19,8 +19,17 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends Component {
+  catchALLUnhandledErrors = (reason, promise) => {
+    // alert('error');
+  }
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener('unhandledrejection', this.catchALLUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchALLUnhandledErrors);
   }
 
   render() {
@@ -36,6 +45,7 @@ class App extends Component {
 
         <div className='app-wrapper-content'>
           <Routes>
+            <Route path="/" element = {<Navigate to={'/profile'} />} />
             <Route path="/profile/*" element={<React.Suspense fallback={<Preloader />}><ProfileContainer/></React.Suspense>} />
             <Route path="/dialogs/*" element={<React.Suspense fallback={<Preloader />}><DialogsContainer/></React.Suspense>} />
             <Route path="/news/*" element={<News />} />
@@ -43,6 +53,7 @@ class App extends Component {
             <Route path="/users/*" element={<UsersContainer />} />
             <Route path="/settings/*" element={<Settings />} />
             <Route path="/login/*" element={<Login />} />
+            <Route path="*" element={<div>404 NOT FOUND</div>} />
           </Routes>
         </div>
       </div>
